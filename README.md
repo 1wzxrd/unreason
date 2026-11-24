@@ -1,3 +1,7 @@
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4b3b5601-4839-4c06-965b-eecaa799dcab" />
+
+
+
 readme.
 
 secure blazing peformative (c/rust/shell workflow).
