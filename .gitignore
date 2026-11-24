@@ -1,7 +1,8 @@
 *.o
 *.tar.gz
-dwm
-st
-dmenu
-slstatus
-slock
+dotfiles/suckless/dwm/dwm
+dotfiles/suckless/st/st
+dotfiles/suckless/dmenu/dmenu
+dotfiles/suckless/dmenu/stest
+dotfiles/suckless/slstatus/slstatus
+dotfiles/suckless/slock/slock
