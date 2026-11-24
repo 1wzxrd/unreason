@@ -1,3 +1,26 @@
+readme.
+
+secure blazing peformative (c/rust/shell workflow).
+low overhead, clean policy, anti bloat, private, minimal
+
+
+archetecture = void x11 ( base live image ) glibc x86_64
+
+
+full list = dwm, dmenu, st, slock,dblock, xresources, systray, systray-toggle, statuscmd, wintitle, walrs, xcompmgr, xwallpaper, dunst, gammastep, light, seatd, dbus, xorg-server, xinit, mesa, maim, clipmenu, iwd, impala, bluez, bluetuith, xzoom, xfe, pipewire, lsp-plugin, rnnoise, libpipewire-module-filter-chain, pavucontrol, pipewire-pulse, wireplumber, limits.conf(rtprio&memlock, ncpamixer(ncurser),nano, xtools,
+
+
+
+
+
+
+
+
+
+
+
+
+
 # unreason 
 
 A reproducible Void Linux (glibc) X11 desktop setup built around dwm, st, dmenu, walrs, and xwallpaper on the `static` branch.
