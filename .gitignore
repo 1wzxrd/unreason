@@ -1,0 +1,7 @@
+*.o
+*.tar.gz
+dwm
+st
+dmenu
+slstatus
+slock

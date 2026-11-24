@@ -1,0 +1,16 @@
+#!/bin/zsh
+export MESA_LOADER_DRIVER_OVERRIDE=dri3
+
+
+# set keyboard layout swedish
+setxkbmap -layout se
+
+# start background daemons
+slstatus &
+gammastep -m randr &
+dunst &
+
+
+[ -f "$HOME/.cache/wal/colors.Xresources" ] && xrdb -merge "$HOME/.cache/wal/colors.Xresources"
+[ -x "$HOME/.local/bin/set-wallpaper" ] && "$HOME/.local/bin/set-wallpaper" --restore
+exec dwm

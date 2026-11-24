@@ -1,0 +1,43 @@
+#!/bin/sh
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+[ -z "$DISPLAY" ] && export DISPLAY=:0
+
+WALLPAPER_DIR="$HOME/.local/share/wallpapers"
+CURRENT_LINK="$HOME/.config/wallpaper.jpg"
+
+if [ "$1" = "--random" ] || [ "$1" = "-r" ]; then
+    PICKED=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | shuf -n 1)
+    if [ -z "$PICKED" ]; then
+        command -v notify-send >/dev/null 2>&1 && notify-send "Wallpaper" "No images found in $WALLPAPER_DIR"
+        exit 1
+    fi
+    cp -f "$PICKED" "$CURRENT_LINK"
+elif [ -n "$1" ] && [ "$1" != "--restore" ]; then
+    if [ -f "$1" ]; then
+        cp -f "$1" "$CURRENT_LINK"
+    else
+        echo "Error: File '$1' not found."
+        exit 1
+    fi
+fi
+
+# 1. Apply wallpaper with xwallpaper
+[ -f "$CURRENT_LINK" ] && xwallpaper --zoom "$CURRENT_LINK"
+
+# 2. Restore existing palette on reboot OR generate a new one with walrs
+if [ "$1" = "--restore" ]; then
+    [ -f "$HOME/.cache/wal/colors.Xresources" ] && xrdb -merge "$HOME/.cache/wal/colors.Xresources"
+    command -v walrs >/dev/null 2>&1 && walrs -R
+elif command -v walrs >/dev/null 2>&1 && [ -f "$CURRENT_LINK" ]; then
+    walrs -i "$CURRENT_LINK"
+    for dir in "$HOME/.local/src/st" "$HOME/.local/src/dwm"; do
+        [ -d "$dir" ] && (cd "$dir" && sudo make clean install)
+    done
+    [ -f "$HOME/.cache/wal/colors.Xresources" ] && xrdb -merge "$HOME/.cache/wal/colors.Xresources"
+fi
+
+# 3. Restart Dunst cleanly
+if pgrep -x dunst >/dev/null 2>&1; then
+    pkill -x dunst
+    dunst >/dev/null 2>&1 &
+fi
