@@ -87,15 +87,15 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 
-	{ MODKEY|ShiftMask,             XK_r,     restart,        {0} },
-        { MODKEY|ShiftMask,             XK_q,     quit,           {0} },
-	{ MODKEY, 			XK_l,     spawn,	  {.v = lockcmd } },
+	{ MODKEY|ShiftMask,             XK_Return,     restart,   {0} },
+    { MODKEY|ShiftMask,             XK_BackSpace,     quit,   {0} },
+	{ MODKEY, 		     			XK_l,     spawn,	  	  {.v = lockcmd } },
 
 	{ Mod1Mask,                     XK_Tab,   focusstack,     {.i = +1 } },
 	{ Mod1Mask|ShiftMask,           XK_Tab,   focusstack,     {.i = -1 } },
 
-	{ MODKEY,                       XK_e,     spawn,          {.v = filecmd } },
-	{ MODKEY,            XK_Left,   moverel,         	  {.i = 0, .f = 24} },
+	{ MODKEY,                       XK_e,     spawn,  {.v = filecmd } },
+	{ MODKEY,            XK_Left,   moverel,          {.i = 0, .f = 24} },
 	{ MODKEY,            XK_Right,  moverel,          {.i = 1, .f = 24} },
 	{ MODKEY,            XK_Up,     moverel,          {.i = 2, .f = 24} },
 	{ MODKEY,            XK_Down,   moverel,          {.i = 3, .f = 24} },
